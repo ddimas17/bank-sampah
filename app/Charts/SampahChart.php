@@ -17,8 +17,7 @@ class SampahChart
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
         $beratSampah = Sampah::groupBy('nama')->selectRaw('sum(berat) as total_berat')->selectRaw('nama')->get();
-        // $berat = [];
-        // $namaSampah = [];
+        
        foreach( $beratSampah as $item ) {
             $berat[] = $item->total_berat;
             $namaSampah[] = $item->nama;
