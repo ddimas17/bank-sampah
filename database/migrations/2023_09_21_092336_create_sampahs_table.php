@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('sampahs', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->string('nama');
+            $table->foreign('username')->references('username')->on('users');
+            $table->string('nama_sampah');
             $table->integer('harga');
             $table->float('berat');
             $table->float('total');

@@ -2,18 +2,20 @@
 
 @section('container')
 <div class="row mt-4">
+    @foreach ($sampahs as $sampah)
     <div class="col-md-4">
         <div class="card">
-            <img src="https://static.indiemarket.news/static-content/uploads/2019/06/DIY-kardus-bekas.jpg" class="card-img-top" alt="kardus">
+            <img src="{{ $sampah->gambar }}" class="card-img-top" alt="kardus">
             <div class="card-body">
-                <h5 class="card-title">Kardus</h5>
-                <p class="card-text">Semua jenis kardus dapat dibuang disini!</p>
-                <p class="card-text">Rp. 3.000/Kg</p>
-                <a href="/tukar/?s=kardus&h=3000" class="btn btn-primary">Tukar</a>
+                <h5 class="card-title">{{ $sampah->nama_barang }}</h5>
+                <p class="card-text">{{ $sampah->deskripsi }}</p>
+                <p class="card-text">Rp. {{ $sampah->harga }}/Kg</p>
+                <a href="/tukar/{{ $sampah->id }}" class="btn btn-primary">Tukar</a>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
+    </div>    
+    @endforeach
+    {{-- <div class="col-md-4">
         <div class="card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs5PCGWFVu4v2e_J-KrnCMCn5KiUloasCtbw&usqp=CAU" class="card-img-top" alt="logam">
             <div class="card-body">
@@ -45,6 +47,6 @@
                 <a href="/tukar/?s=kaca&h=2000" class="btn btn-primary">Tukar</a>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>    
 @endsection

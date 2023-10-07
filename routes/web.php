@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'signin'])->middleware('guest');
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/sampah', [SampahController::class, 'index']);
-Route::get('/tukar', [SampahController::class, 'tukar']);
+Route::get('/tukar/{id}', [SampahController::class, 'tukar']);
 Route::post('/tukar', [SampahController::class, 'tukarSampah']);
 
 Route::get('/dashboard', [SampahController::class, 'dashboard']);
