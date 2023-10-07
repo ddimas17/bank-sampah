@@ -16,16 +16,29 @@
             </div>
             <div class="col-lg-6 bg-info p-4">
                 <h4 class="text-uppercase">login</h4>
+                @if (session()->has('loginFailed'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('loginFailed') }}
+                </div>
+                @endif
                 <form action="/login" method="post">
+                    @csrf
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
+                        <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" value="{{ old('username') }}">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input name="password" type="password" class="form-control @error('password')
+                            is-invalid
+                        @enderror" id="exampleInputPassword1">
+                        @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success" name="login">login</button>
                     <div class="form-text mt-2">* Silahkan masukkan username = guest dan password = guest</div>
                   </form>
             </div>

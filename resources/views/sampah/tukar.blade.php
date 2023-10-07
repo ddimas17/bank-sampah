@@ -8,15 +8,18 @@
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">username</label>
-                    <input type="text" class="form-control" id="username" name="username" value="guest">
+                    <input type="text" class="form-control" id="username" name="username" value=@if(!auth()->check()) "guest"
+                    @else
+                    {{ auth()->user()->username }}
+                    @endif>
                 </div>
                 <div class="mb-3">
                     <label for="sampah" class="form-label">Sampah</label>
-                    <input type="text" class="form-control" id="sampah" name="nama" value="{{ $nama }}">
+                    <input type="text" class="form-control" id="sampah" name="nama_sampah" value="{{ $sampah->nama_barang }}">
                 </div>
                 <div class="mb-3">
                     <label for="harga" class="form-label">harga /kg</label>
-                    <input type="text" class="form-control" id="harga" name="harga" value="{{ $harga }}">
+                    <input type="text" class="form-control" id="harga" name="harga" value="{{ $sampah->harga }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="berat">Berat</label>

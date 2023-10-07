@@ -25,7 +25,7 @@
                 @foreach ($datas as $data)
                     <tr>
                         <td>{{ $data->username }}</td>
-                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->nama_sampah }}</td>
                         <td>{{ $data->harga }}</td>
                         <td>{{ $data->berat }}</td>
                         <td>{{ $data->total }}</td>

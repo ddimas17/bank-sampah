@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
+    @if (session()->has('logout'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('logout') }}
+    </div>
+    @endif
     <div class="row mt-4">
         <div class="col-md-6 mb-4 d-flex flex-column justify-content-center">
             <div class="col-10">
@@ -13,7 +18,7 @@
             <img class="img-fluid" src="https://karangsari-kulonprogo.desa.id/desa/upload/artikel/sedang_1607796641_konsep%20bank%20sampah%20sederhana.jpg" alt="sampah">
         </div>
     </div>
-    <div class="row mt-5">
+    <div class="row my-5">
         <div class="col-md-12">
             <h1 class="text-center text-uppercase">Tentang</h1>
         </div>

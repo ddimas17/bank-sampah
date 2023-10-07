@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sampah extends Model
 {
-    protected $fillable = ['nama', 'harga', 'berat', 'total', 'username'];
+    protected $guarded = ['id'];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'username', 'username');
+    }
 }
